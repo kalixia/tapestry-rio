@@ -9,7 +9,7 @@
     <copyright>&#169;2011 Kalixia, SARL.</copyright>
     <item>
       <title>File: 3,
-             Errors: 37,
+             Errors: 48,
              Warnings: 0,
              Infos: 0
       </title>
@@ -38,7 +38,7 @@
                   0
                 </td>
                 <td>
-                  11
+                  13
                 </td>
               </tr>
                           <tr>
@@ -52,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  24
+                  30
                 </td>
               </tr>
                           <tr>
@@ -66,7 +66,7 @@
                   0
                 </td>
                 <td>
-                  2
+                  5
                 </td>
               </tr>
                       </tbody>
