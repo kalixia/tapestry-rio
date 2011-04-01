@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.kalixia.tapestry</groupId>
             <artifactId>tapestry-rio</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <!-- END SNIPPET: tapestry-rio-dependency -->
         <dependency>

@@ -27,7 +27,7 @@ Setup
 * Tapestry
 
  The default settings can be customized to match your requirements.
- The various configuration settings are defined in the <<<SymbolConstants>>> class.
+ The various configuration settings are defined in the <<<RioConstants>>> class.
 
  You can define the settings through the usual Tapestry configuration.
  Here is an example customizing the Rio service discovery timeout:

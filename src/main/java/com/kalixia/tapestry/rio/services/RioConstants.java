@@ -22,7 +22,7 @@ package com.kalixia.tapestry.rio.services;
  */
 public class RioConstants {
     /**
-     * Indicates in seconds the timeout to use when discovering Rio services.
+     * Indicates (in seconds) the timeout to use when discovering Rio services.
      */
     public static final String DISCOVERY_TIMEOUT = "rio.discovery.timeout";
 }
