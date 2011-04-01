@@ -9,7 +9,7 @@
     <copyright>&#169;2011 Kalixia, SARL.</copyright>
     <item>
       <title>File: 3,
-             Errors: 45,
+             Errors: 37,
              Warnings: 0,
              Infos: 0
       </title>
@@ -38,21 +38,7 @@
                   0
                 </td>
                 <td>
-                  10
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/kalixia/tapestry-rio/checkstyle.html#com.kalixia.tapestry.rio.services.ServiceAssociationObjectProvider.java">com/kalixia/tapestry/rio/services/ServiceAssociationObjectProvider.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  14
+                  11
                 </td>
               </tr>
                           <tr>
@@ -66,7 +52,21 @@
                   0
                 </td>
                 <td>
-                  21
+                  24
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/kalixia/tapestry-rio/checkstyle.html#com.kalixia.tapestry.rio.services.RioConstants.java">com/kalixia/tapestry/rio/services/RioConstants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                       </tbody>
