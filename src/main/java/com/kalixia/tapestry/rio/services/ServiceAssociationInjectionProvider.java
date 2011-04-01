@@ -35,15 +35,21 @@ import java.util.concurrent.TimeoutException;
 
 public class ServiceAssociationInjectionProvider implements InjectionProvider {
     private final Long timeout;
+    private final TimeUnit unit;
+    private String[] groups;
     private final RMISecurityManager rioSecurityManager;
 
-    public ServiceAssociationInjectionProvider(@Symbol(RioConstants.DISCOVERY_TIMEOUT) Long timeout) {
+    public ServiceAssociationInjectionProvider(@Symbol(RioConstants.DISCOVERY_GROUPS) String[] groups,
+                                               @Symbol(RioConstants.DISCOVERY_TIMEOUT) Long timeout,
+                                               @Symbol(RioConstants.DISCOVERY_UNIT) TimeUnit unit) {
         rioSecurityManager = new RMISecurityManager() {
             public void checkPermission(Permission perm) {
                 // do nothing -- allow everything!
             }
         };
+        this.groups = groups;
         this.timeout = timeout;
+        this.unit = unit;
     }
 
     public boolean provideInjection(String fieldName, Class fieldType, ObjectLocator locator,
@@ -56,13 +62,13 @@ public class ServiceAssociationInjectionProvider implements InjectionProvider {
             if (annotation == null) return false;
 
             AssociationDescriptor descriptor = AssociationDescriptor.create(annotation.name(),
-                    null, annotation.serviceType(), annotation.type(), DiscoveryGroupManagement.ALL_GROUPS);
+                    null, annotation.serviceType(), annotation.type(), groups);
             AssociationManagement aMgr = new AssociationMgmt();
             Association association = aMgr.addAssociationDescriptor(descriptor);
 
             try {
                 Future serviceFuture = association.getServiceFuture();
-                Object inject = serviceFuture.get(timeout, TimeUnit.SECONDS);        // TODO: allow for custom setting
+                Object inject = serviceFuture.get(timeout, unit);
 
                 assert inject != null;
 

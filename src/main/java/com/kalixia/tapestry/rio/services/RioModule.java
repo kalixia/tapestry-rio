@@ -15,14 +15,18 @@
  */
 package com.kalixia.tapestry.rio.services;
 
+import net.jini.discovery.DiscoveryGroupManagement;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.services.InjectionProvider;
+import java.util.concurrent.TimeUnit;
 
 public class RioModule {
 
     public void contributeFactoryDefaults(MappedConfiguration<String, Object> configuration) {
-        configuration.add(RioConstants.DISCOVERY_TIMEOUT, 10);       // default time out for discovery: 10 seconds
+        configuration.add(RioConstants.DISCOVERY_GROUPS, DiscoveryGroupManagement.ALL_GROUPS);
+        configuration.add(RioConstants.DISCOVERY_TIMEOUT, 30);              // default time out for discovery is 30...
+        configuration.add(RioConstants.DISCOVERY_UNIT, TimeUnit.SECONDS);   // ... seconds
     }
 
     public static void contributeInjectionProvider(OrderedConfiguration<InjectionProvider> configuration) {
