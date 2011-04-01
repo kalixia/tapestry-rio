@@ -1,0 +1,31 @@
+ -----
+Welcome to tapestry-rio module
+ ------
+Jerome Bernard
+ ------
+1 April 2011
+ ------
+
+Welcome to tapestry-rio module
+
+* Introduction
+
+ {{{http://www.rio-project.org}Rio}} is a great way to deploy and manage distributed
+ services. The <<<tapestry-rio>>> module is meant to ease the development of
+ Tapestry applications acting as Rio clients.
+
+ This module reuses the <<<@ServiceAssociation>>> annotation that Rio provides,
+ in order to give a consistent behaviour between associations of services and
+ associations of services and clients.
+
+* Usage
+
+ After you complete the {{{./setup.html}setup instructions}}, all you have to do in
+ order to associate your Tapestry pages/components with Rio services is to add the
+ <<<@ServiceAssociation>>> annotation on your fields/getters.
+
+ Here is an annotated example:
+
+%{include|source=snippets/MyPage.java|id=tapestry-rio-injection|show-gutter=false}
+
+

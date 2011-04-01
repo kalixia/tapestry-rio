@@ -1,0 +1,36 @@
+ -----
+Setup
+ ------
+Jerome Bernard
+ ------
+1 April 2011
+ ------
+
+Setup
+
+* Maven
+
+ Discovery of {{{http://www.rio-project.org}Rio}} services within your
+ application is so easy with Tapestry support for autoloading modules that
+ all you need to do is to include the <<<tapestry-rio>>> module as a Maven dependency:
+
+%{include|source=snippets/pom.xml|id=tapestry-rio-dependency|show-gutter=false}
+
+ This will of course only work if you declare the <<<tapestry-rio>>> repository
+ in your pom.xml:
+
+%{include|source=snippets/pom.xml|id=tapestry-rio-repository|show-gutter=false}
+
+ Tapestry will then find out that the <<<tapestry-rio>>> module is available and
+ initialize it properly.
+
+* Tapestry
+
+ The default settings can be customized to match your requirements.
+ The various configuration settings are defined in the <<<SymbolConstants>>> class.
+
+ You can define the settings through the usual Tapestry configuration.
+ Here is an example customizing the Rio service discovery timeout:
+
+%{include|source=snippets/MyModule.java}
+

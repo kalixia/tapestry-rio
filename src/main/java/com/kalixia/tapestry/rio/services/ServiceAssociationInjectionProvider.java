@@ -17,6 +17,7 @@ package com.kalixia.tapestry.rio.services;
 
 import net.jini.discovery.DiscoveryGroupManagement;
 import org.apache.tapestry5.ioc.ObjectLocator;
+import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.model.MutableComponentModel;
 import org.apache.tapestry5.services.ClassTransformation;
 import org.apache.tapestry5.services.InjectionProvider;
@@ -33,14 +34,16 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class ServiceAssociationInjectionProvider implements InjectionProvider {
+    private final Long timeout;
     private final RMISecurityManager rioSecurityManager;
 
-    public ServiceAssociationInjectionProvider() {
+    public ServiceAssociationInjectionProvider(@Symbol(RioConstants.DISCOVERY_TIMEOUT) Long timeout) {
         rioSecurityManager = new RMISecurityManager() {
             public void checkPermission(Permission perm) {
                 // do nothing -- allow everything!
             }
         };
+        this.timeout = timeout;
     }
 
     public boolean provideInjection(String fieldName, Class fieldType, ObjectLocator locator,
@@ -59,7 +62,7 @@ public class ServiceAssociationInjectionProvider implements InjectionProvider {
 
             try {
                 Future serviceFuture = association.getServiceFuture();
-                Object inject = serviceFuture.get(30, TimeUnit.SECONDS);        // TODO: allow for custom setting
+                Object inject = serviceFuture.get(timeout, TimeUnit.SECONDS);        // TODO: allow for custom setting
 
                 assert inject != null;
 

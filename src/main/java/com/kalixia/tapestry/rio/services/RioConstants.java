@@ -15,18 +15,14 @@
  */
 package com.kalixia.tapestry.rio.services;
 
-import org.apache.tapestry5.ioc.MappedConfiguration;
-import org.apache.tapestry5.ioc.OrderedConfiguration;
-import org.apache.tapestry5.services.InjectionProvider;
-
-public class RioModule {
-
-    public void contributeFactoryDefaults(MappedConfiguration<String, Object> configuration) {
-        configuration.add(RioConstants.DISCOVERY_TIMEOUT, 10);       // default time out for discovery: 10 seconds
-    }
-
-    public static void contributeInjectionProvider(OrderedConfiguration<InjectionProvider> configuration) {
-        configuration.addInstance("ServiceAssociation", ServiceAssociationInjectionProvider.class);
-    }
-
+/**
+ * Defines the names of symbols used to configure tapestry-rio module.
+ *
+ * @see org.apache.tapestry5.ioc.services.SymbolSource
+ */
+public class RioConstants {
+    /**
+     * Indicates in seconds the timeout to use when discovering Rio services.
+     */
+    public static final String DISCOVERY_TIMEOUT = "rio.discovery.timeout";
 }
