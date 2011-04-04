@@ -15,7 +15,6 @@
  */
 package com.kalixia.tapestry.rio.services;
 
-import net.jini.discovery.DiscoveryGroupManagement;
 import org.apache.tapestry5.ioc.ObjectLocator;
 import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.model.MutableComponentModel;
@@ -39,17 +38,17 @@ public class ServiceAssociationInjectionProvider implements InjectionProvider {
     private String[] groups;
     private final RMISecurityManager rioSecurityManager;
 
-    public ServiceAssociationInjectionProvider(@Symbol(RioConstants.DISCOVERY_GROUPS) String[] groups,
-                                               @Symbol(RioConstants.DISCOVERY_TIMEOUT) Long timeout,
-                                               @Symbol(RioConstants.DISCOVERY_UNIT) TimeUnit unit) {
+    public ServiceAssociationInjectionProvider(@Symbol(RioConstants.DISCOVERY_GROUPS) String groups,
+                                               @Symbol(RioConstants.DISCOVERY_TIMEOUT) String timeout,
+                                               @Symbol(RioConstants.DISCOVERY_UNIT) String unit) {
         rioSecurityManager = new RMISecurityManager() {
             public void checkPermission(Permission perm) {
                 // do nothing -- allow everything!
             }
         };
-        this.groups = groups;
-        this.timeout = timeout;
-        this.unit = unit;
+        this.groups = groups.split(",");
+        this.timeout = Long.parseLong(timeout);
+        this.unit = TimeUnit.valueOf(unit);
     }
 
     public boolean provideInjection(String fieldName, Class fieldType, ObjectLocator locator,
